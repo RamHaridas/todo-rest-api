@@ -4,36 +4,33 @@
   "resources": [
     {
       "type": "Microsoft.Authorization/roleDefinitions",
-      "apiVersion": "2018-01-01-preview",
-      "name": "[guid(subscription().id, 'RecoveryVaultContributor')]",
+      "apiVersion": "2021-04-01-preview",
+      "name": "[guid(subscription().id, 'BackupFileServiceToRecoveryVault')]",
       "properties": {
-        "roleName": "Recovery Vault Contributor",
-        "description": "Can manage Recovery Vaults",
+        "roleName": "Backup File Service to Recovery Vault",
+        "description": "Allows backup of file services to a Recovery Services vault with least privilege",
         "permissions": [
           {
             "actions": [
-              "Microsoft.RecoveryServices/vaults/*",
-              "Microsoft.RecoveryServices/vaults/backupFabrics/*",
-              "Microsoft.RecoveryServices/vaults/backupPolicies/*",
-              "Microsoft.RecoveryServices/vaults/backupProtectedItems/*",
-              "Microsoft.RecoveryServices/vaults/backupProtectionIntent/*"
+              "Microsoft.Storage/storageAccounts/fileServices/shares/read",
+              "Microsoft.Storage/storageAccounts/fileServices/shares/backup/action",
+              "Microsoft.RecoveryServices/vaults/backupPolicies/read",
+              "Microsoft.RecoveryServices/vaults/backupProtectedItems/read",
+              "Microsoft.RecoveryServices/vaults/backupProtectedItems/write",
+              "Microsoft.RecoveryServices/vaults/backupJobs/read",
+              "Microsoft.RecoveryServices/vaults/backupJobs/write"
             ],
-            "notActions": []
+            "notActions": [],
+            "dataActions": [
+              "Microsoft.Storage/storageAccounts/fileServices/shares/files/read",
+              "Microsoft.Storage/storageAccounts/fileServices/shares/files/write"
+            ],
+            "notDataActions": []
           }
         ],
         "assignableScopes": [
           "[subscription().id]"
         ]
-      }
-    },
-    {
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2020-04-01-preview",
-      "name": "[guid(resourceGroup().id, 'RecoveryVaultContributorAssignment')]",
-      "properties": {
-        "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', guid(subscription().id, 'RecoveryVaultContributor'))]",
-        "principalId": "<your_principal_id>",  // Replace this with the object ID of the user or service principal
-        "scope": "[resourceGroup().id]"
       }
     }
   ]
