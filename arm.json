@@ -12,6 +12,7 @@
         "permissions": [
           {
             "actions": [
+              "Microsoft.Storage/storageAccounts/read",
               "Microsoft.Storage/storageAccounts/fileServices/shares/read",
               "Microsoft.Storage/storageAccounts/fileServices/shares/backup/action",
               "Microsoft.RecoveryServices/vaults/backupPolicies/read",
