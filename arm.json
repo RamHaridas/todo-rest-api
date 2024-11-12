@@ -23,8 +23,9 @@
             ],
             "notActions": [],
             "dataActions": [
-              "Microsoft.Storage/storageAccounts/fileServices/shares/files/read",
-              "Microsoft.Storage/storageAccounts/fileServices/shares/files/write"
+              "Microsoft.Storage/storageAccounts/fileServices/shares/read",
+              "Microsoft.Storage/storageAccounts/fileServices/shares/write",
+              "Microsoft.Storage/storageAccounts/fileServices/shares/restore/action",
             ],
             "notDataActions": []
           }
