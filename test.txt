@@ -1,0 +1,5 @@
+So, we have a problem with some migrated VMs when trying to install the JointActiveExtension. it fails while trying to join with domain dmzprod01. I am not sure why this is happening because all the VMs have same NSG and subnet, yet it fails for few VMs.
+
+
+
+I was thinking that, since this is happening for migrated VMs and mostly all of migrated VMs have JointActiveDirectory already installed. can we put a condition in deployment arm template to skip redundant installation of JointActiveDirecory for migrated VMs.
