@@ -139,3 +139,4 @@ foreach ($vm in $vmlist.value) {  # iterating through each vm in the list
     }
     RemoveExtension -vm $vm -jsonExtensions $jsonExtensions -installedExtensions $installedExtensions # Remove extension (if any to remove)
 }
+# Stop-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
